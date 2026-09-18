@@ -1,16 +1,16 @@
 GPIO的八种工作模式：
 
 >四种输出模式：
-1.通用推挽输出
-2.通用开漏输出
-3.复用推挽输出
-4.复用开漏输出
+1.通用推挽输出(GPIO_Mode_Out_PP)
+2.通用开漏输出(GPIO_Mode_Out_OD)
+3.复用推挽输出(GPIO_Mode_AF_PP)
+4.复用开漏输出(GPIO_Mode_AF_DD)
 
 >四种输入模式：
-1. 浮空输入（Floating Input）
-2. 上拉输入（Pull-Up Input）
-3. 下拉输入（Pull-Down Input）
-4. 模拟输入（Analog Input）
+1. 浮空输入(GPIO_Mode_IN_FLOATING)
+2. 上拉输入(GPIO_Mode_IPU)
+3. 下拉输入(GPIO_Mode_IPD)
+4. 模拟输入(GPIO_Mode_AIN)
 
 -->输出模式
 --->推挽：推（P-MOS）和拉（N-MOS）同时导通
@@ -21,6 +21,20 @@ GPIO的八种工作模式：
         输出低电平(0)时，N-MOS导通，P-MOS不导通，输出低电压。
 --->通用：GPIO口可以作为普通的输入输出口使用。
 --->复用：GPIO口可以复用为其他功能，如UART、SPI、I
+
+>GPIO的使用
+-->开启GPIOx的时钟
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOx, ENABLE)
+	enable开启时钟
+-->GPIO_Init
+	GPIO的工作模式
+	GPIO的最大输出速度(GPIO_Speed_xMHz)
+-->GPIO_WriteBit
+	向寄存器写入0/1控制IO引脚
+	GPIO_WriteBit(GPIOTypeDef *GPIOx, uint_16 GPIO_Pin, BitAction BitValue);
+				(	GPIOx,	GPIO_Pin_x,	Bit_RESET(0)/Bit_SET(1)		)
+
+	
 
 
 
